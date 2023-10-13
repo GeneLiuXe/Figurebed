@@ -1,2 +1,2 @@
 # Figurebed
-This is a figure bed belonging to Gene.
+This is a figure bed created by Gene.

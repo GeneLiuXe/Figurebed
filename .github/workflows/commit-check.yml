@@ -1,0 +1,20 @@
+name: Commit Message Check
+
+on: [push]
+
+jobs:
+  commit-message-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Verify commit message format
+      run: |
+        commit_msg=$(git log --format=%B -n 1 $GITHUB_SHA)
+        commit_regex="^(feat|fix|docs|style|refactor|perf|test|chore|revert)\((\*|(((frontend|backend|deploy|docs)(,( )?(frontend|backend|deploy|docs))*)))\): .{1,50}$"
+        if ! echo "$commit_msg" | grep -iqE "$commit_regex"; then
+          echo "Error: Commit message format is incorrect. Format should be: type(scope): message (50 characters max)"
+          exit 1
+        fi
