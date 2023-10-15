@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Define commit format regex
-commit_msg_regex="^(feat|fix|docs|style|refactor|perf|test|chore|revert)\((\*|(((frontend|backend|deploy|docs)(,( )?(frontend|backend|deploy|docs))*)))\): .{1,50}$"
+commit_msg_regex="^(feat|fix|docs|style|refactor|perf|test|chore|revert)\((\*|(((frontend|backend|deploy|docs)(,( )?(frontend|backend|deploy|docs))*)))\): .{1,100}"
 
 # Read commit message from stdin
-commit_msg=$(cat)
+commit_msg=`cat $1`
 
 # Check commit format
 if ! [[ $commit_msg =~ $commit_msg_regex ]]; then
