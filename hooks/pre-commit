@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Check for python files and run black
+python_files=$(find . -name "*.py")
+if [ -n "$python_files" ]; then
+    black -l 120 $python_files
+fi
+
+# Check if npm is installed
+if command -v npm &> /dev/null; then
+    npm run lint
+fi
