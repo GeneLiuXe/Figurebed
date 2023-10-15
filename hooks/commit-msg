@@ -10,6 +10,8 @@ commit_msg = sys.stdin.read()
 # Check commit format
 if not re.match(commit_msg_regex, commit_msg):
     print("Invalid commit message format. Please follow the format: <type>(<scope>): <subject>", file=sys.stderr)
+    print("<type> has the following options: feat, fix, docs, style, refactor, perf, test, chore, revert", file=sys.stderr)
+    print("<scope> has the following options: frontend, backend, deploy, docs, * (if multiple are involved)", file=sys.stderr)
     sys.exit(1)
 else:
     sys.exit(0)
