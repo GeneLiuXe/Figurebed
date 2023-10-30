@@ -37,3 +37,5 @@ if git diff --name-only --cached | grep -q "^frontend/"; then
         fi
     fi
 fi
+
+git add .
